@@ -5,6 +5,8 @@ import { mobile } from "../responsive";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import {Badge} from "@material-ui/core"
+import ShoppingCartOutlined from "@material-ui/icons/ShoppingCartOutlined"
 
 const Container = styled.div`
   height: 60px;
@@ -84,10 +86,9 @@ function Navbar() {
           <MenuItem onClick={() => navigate("/login")}>SIGN IN</MenuItem>
           <Link to="/cart">
             <MenuItem>
-              {/* <Badge badgeContent={quantity} color="primary">
+              <Badge badgeContent={quantity} color="primary">
                 <ShoppingCartOutlined />
-            </Badge> */}
-              cart {quantity}
+            </Badge>
             </MenuItem>
           </Link>
         </Right>
