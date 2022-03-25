@@ -9,22 +9,26 @@ import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
 import { addProduct } from "../redux/cartRedux";
 import { publicRequest } from "../requestMethod";
-import { mobile } from "../responsive";
+import { mobile, tablet } from "../responsive";
 
 const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
   ${mobile({ padding: "10px", flexDirection: "column" })}
+  width: 100%;
+  overflow: hidden;
 `;
 const ImgContainer = styled.div`
   flex: 1;
+  ${tablet({ height: "50vh" })}
 `;
 const Image = styled.img`
   width: 100%;
   height: 90vh;
   object-fit: cover;
   ${mobile({ height: "40vh" })}
+  ${tablet({ height: "100%" })}
 `;
 const InfoContainer = styled.div`
   flex: 1;

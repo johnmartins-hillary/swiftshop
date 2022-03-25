@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import styled from "styled-components";
 import { sliderItems } from "../data";
-import { mobile } from "../responsive";
+import { mobile, tablet } from "../responsive";
 
 const Container = styled.div`
-  width: 100%auto;
+  width: 100%;
   height: 100vh;
   display: flex;
   position: relative;
   overflow: hidden;
-  ${mobile({ display: "none" })}
-
+  ${mobile({ height: "50vh" })}
+  ${tablet({ height: "70vh" })}
 `;
 const Arrow = styled.div`
   width: 50px;
@@ -44,6 +44,8 @@ const Slide = styled.div`
   display: flex;
   align-items: center;
   background-color: #${(props) => props.bg};
+  ${mobile({ height: "50vh" })}
+  ${tablet({ height: "70vh" })}
 `;
 const ImgContainer = styled.div`
   height: 100%;
@@ -51,10 +53,13 @@ const ImgContainer = styled.div`
 `;
 const Image = styled.img`
   height: 80%;
+  ${mobile({ width: "100%" })}
 `;
 const InfoContainer = styled.div`
   flex: 1;
   padding: 50px;
+  ${mobile({ display: "none" })}
+  ${tablet({ display: "none" })}
 `;
 
 const Title = styled.h1`

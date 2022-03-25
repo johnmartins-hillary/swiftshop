@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { login } from "../redux/apiCalls";
 import { mobile } from "../responsive";
+import { Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 const Container = styled.div`
   width: 100vw;
@@ -11,12 +13,13 @@ const Container = styled.div`
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
     ),
-    url("/images/bg2.webp") center;
+    url("/images/pic6.webp") center;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 `;
 const Wrapper = styled.div`
   width: 25%;
@@ -53,13 +56,15 @@ const Button = styled.button`
   }
 `;
 
-const Link = styled.a`
+const LINK = styled(Link)`
   margin: 5px 0px;
   font-size: 12px;
   text-decoration: underline;
   cursor: pointer;
+  color: #000;
 `;
 const Error = styled.span`
+  margin: 10px 0;
   color: red;
 `;
 
@@ -74,29 +79,36 @@ function Login() {
     login(dispatch, { username, password });
   };
   return (
-    <Container>
-      <Wrapper>
-        <Title>SIGN IN</Title>
-        <Form>
-          <Input
-            placeholder="username"
-            type="text"
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <Input
-            placeholder="password"
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {error && <Error>Something went wrong...</Error>}
-          <Button onClick={handleClick} disabled={isFetching}>
-            LOGIN
-          </Button>
-          <Link>Forgot Password ?</Link>
-          <Link>Create a New Account</Link>
-        </Form>
-      </Wrapper>
-    </Container>
+    <>
+      <Navbar />
+      <Container>
+        <Wrapper>
+          <Title>SIGN IN</Title>
+          <Form>
+            <Input
+              placeholder="username"
+              type="text"
+              required
+              minLength="6"
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <Input
+              placeholder="password"
+              type="password"
+              required
+              minLength="6"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {error && <Error>Something went wrong...</Error>}
+            <Button onClick={handleClick} disabled={isFetching}>
+              LOGIN
+            </Button>
+            <LINK to="/">Forgot Password ?</LINK>
+            <LINK to="/register">Create a New Account</LINK>
+          </Form>
+        </Wrapper>
+      </Container>
+    </>
   );
 }
 

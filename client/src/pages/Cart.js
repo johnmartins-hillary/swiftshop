@@ -8,7 +8,10 @@ import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
 import { mobile } from "../responsive";
 
-const Container = styled.div``;
+const Container = styled.div`
+  width: 100%;
+  overflow: hidden;
+`;
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -35,6 +38,11 @@ const TopBotton = styled.button`
   background-color: ${(props) =>
     props.type === "filled" ? "black" : "transparent"};
   color: ${(props) => props.type === "filled" && "white"};
+
+  a {
+    color: black;
+    text-decoration: none;
+  }
 `;
 const TopTexts = styled.div`
   ${mobile({ display: "none" })}
@@ -154,7 +162,9 @@ function Cart() {
       <Wrapper>
         <Title>YOUR BAG</Title>
         <Top>
-          <TopBotton>CONTINUE SHOPPING</TopBotton>
+          <TopBotton>
+            <a href="/">CONTINUE SHOPPING</a>
+          </TopBotton>
           <TopTexts>
             <TopText>Shopping Bag (2)</TopText>
             <TopText>Your Whihlist (0)</TopText>
@@ -178,18 +188,23 @@ function Cart() {
                     <ProductSize>
                       <b>Size:</b> {product.size}
                     </ProductSize>
+                    <TopBotton>Delete</TopBotton>
                   </Details>
                 </ProductDetail>
+
                 <PriceDetail>
                   <ProductAmountContainer>
                     <FaPlus />
                     <ProductAmount>{product.quantity}</ProductAmount>
                     <FaMinus />
                   </ProductAmountContainer>
-                  <ProductPrice>$ {product.price*product.quantity}</ProductPrice>
+                  <ProductPrice>
+                    $ {product.price * product.quantity}
+                  </ProductPrice>
                 </PriceDetail>
               </Product>
             ))}
+
             <Hr />
           </Info>
           <Summary>

@@ -6,10 +6,16 @@ import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
 import Products from "../components/Products";
 import Slider from "../components/Slider";
+import styled from "styled-components";
+
+const HomeContainer = styled.div`
+  width: 100%;
+  overflow: hidden;
+`;
 
 function Home() {
   return (
-    <div>
+    <HomeContainer>
       <Announcement />
       <Navbar />
       <Slider />
@@ -17,7 +23,7 @@ function Home() {
       <Products />
       <Newsletter />
       <Footer />
-    </div>
+    </HomeContainer>
   );
 }
 

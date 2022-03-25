@@ -8,7 +8,10 @@ import Newsletter from "../components/Newsletter";
 import Products from "../components/Products";
 import { mobile } from "../responsive";
 
-const Container = styled.div``;
+const Container = styled.div`
+  width: 100%;
+  overflow: hidden;
+`;
 const Title = styled.h1`
   margin: 20px;
 `;
@@ -84,7 +87,7 @@ function ProductList() {
           </Select>
         </Filter>
       </FilterContainer>
-      <Products cat={cat} filters={filters} sort={sort}/>
+      <Products cat={cat} filters={filters} sort={sort} />
       <Newsletter />
       <Footer />
     </Container>
